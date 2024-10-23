@@ -77,6 +77,6 @@ Ink SuccessButtonChild(String ButtonText) {
 }
 
 TextStyle ButtonTextStyle() {
-  return TextStyle(
-      fontSize: 14, fontFamily: 'poppins', fontWeight: FontWeight.w400);
+  return const TextStyle(
+      fontSize: 16, fontFamily: 'poppins', fontWeight: FontWeight.w400,color: Colors.white);
 }
