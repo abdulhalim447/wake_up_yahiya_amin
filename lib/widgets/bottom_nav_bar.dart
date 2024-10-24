@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wake_up/screens/youtube_player.dart';
 
 class BottomNavBar extends StatelessWidget {
   @override
@@ -20,7 +21,11 @@ class BottomNavBar extends StatelessWidget {
       ],
       currentIndex: 0,
       selectedItemColor: Colors.blue,
-      onTap: (index) {},
+      onTap: (index) {
+        if(index == 1){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => YoutubeVideoPlayer(),));
+        }
+      },
     );
   }
 }

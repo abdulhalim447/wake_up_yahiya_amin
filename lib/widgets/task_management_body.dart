@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wake_up/screens/youtube_player.dart';
 import 'package:wake_up/widgets/slider.dart';
 import 'time_management_card.dart';
 import 'task_list.dart';

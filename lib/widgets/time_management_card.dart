@@ -26,16 +26,19 @@ class TimeManagementCard extends StatelessWidget {
               ),
               // day 1================================
               Container(
-                height: 60,
-                width: 60,
+                height: 70,
+                width: 70,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.white
-
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.white,
+                  border: Border.all( // Adding border
+                    color: Colors.red, // Border color
+                    width: 2, // Border width
+                  ),
                 ),
 
                 child: Center(
-                  child: Text('Day 1', style: TextStyle(fontSize: 14),),
+                  child: Text('Day 1', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,color: Colors.green),),
                 ),
               ),
 

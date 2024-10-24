@@ -38,6 +38,8 @@ class _HomeBannerSliderState extends State<HomeBannerSlider> {
           options: CarouselOptions(
             height: 200.0, // Adjust height if needed
             autoPlay: true,
+            enlargeCenterPage: true,
+            enableInfiniteScroll: true,
             autoPlayInterval: const Duration(seconds: 3),
             onPageChanged: (index, reason) {
               _selectedIndex.value = index;
