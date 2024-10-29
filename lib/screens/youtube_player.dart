@@ -14,7 +14,7 @@ class _YoutubeVideoPlayerState extends State<YoutubeVideoPlayer> {
   @override
   void initState() {
     super.initState();
-    _initializePlayer("https://youtu.be/IhLv7p0fh5Q?si=RXeC261IjL9j8lXo"); // Default video
+    _initializePlayer("https://youtu.be/IhLv7p0fh5Q?si=RXeC261IjL9j8lXo "); // Default video
   }
 
   void _initializePlayer(String videoUrl) {
