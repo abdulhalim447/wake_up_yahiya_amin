@@ -35,7 +35,7 @@ class TimeManagementCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                   color: Colors.white,
                   border: Border.all(
-                    color: Colors.red,
+                    color: Colors.yellow,
                     width: 2,
                   ),
                 ),
@@ -54,9 +54,9 @@ class TimeManagementCard extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Center(
-            child: Text(
-              "Task is completed",
-              style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+            child: Text( remainingTask == 0 ?
+              "Task is completed":"Task is Not Completed",
+              style: TextStyle(color: remainingTask == 0 ? Colors.green : Colors.red, fontWeight: FontWeight.bold),
             ),
           ),
           SizedBox(height: 5),
