@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class TimeManagementCard extends StatelessWidget {
+  final int day;
+  final int remainingTask;
+  final int totalTasks;
+
+  TimeManagementCard({required this.day, required this.remainingTask, required this.totalTasks});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,8 +21,6 @@ class TimeManagementCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-
-              // Start time  ===================================
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -24,26 +28,21 @@ class TimeManagementCard extends StatelessWidget {
                   Text("6:00 am"),
                 ],
               ),
-              // day 1================================
               Container(
                 height: 70,
                 width: 70,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   color: Colors.white,
-                  border: Border.all( // Adding border
-                    color: Colors.red, // Border color
-                    width: 2, // Border width
+                  border: Border.all(
+                    color: Colors.red,
+                    width: 2,
                   ),
                 ),
-
                 child: Center(
-                  child: Text('Day 1', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,color: Colors.green),),
+                  child: Text('Day $day', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.green)),
                 ),
               ),
-
-              // end time  ======================================
-              
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -61,7 +60,7 @@ class TimeManagementCard extends StatelessWidget {
             ),
           ),
           SizedBox(height: 5),
-          Center(child: Text("Remaining task 2 of 3")),
+          Center(child: Text("Remaining task $remainingTask of $totalTasks")),
         ],
       ),
     );

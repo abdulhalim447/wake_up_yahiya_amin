@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../screens/youtube_player.dart';
+
 class VideoSection extends StatelessWidget {
+  final String videoUrl;
+
+  VideoSection({required this.videoUrl});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,11 +24,19 @@ class VideoSection extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Center(
-            child: Icon(
-              Icons.play_circle_outline,
-              size: 50,
-              color: Colors.blue,
-            ),
+            child: videoUrl.isNotEmpty
+                ? IconButton(
+              icon: Icon(Icons.play_circle_outline, size: 50, color: Colors.blue),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => YoutubeVideoPlayer(/*videoUrl: videoUrl*/),
+                  ),
+                );
+              },
+            )
+                : Text("No video available"),
           ),
         ),
       ],

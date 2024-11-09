@@ -1,83 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:wake_up/utils/utility.dart';
+import 'package:wake_up/screens/dashboard_model/task_model.dart';
+import '../screens/dashboard_model/TaskService.dart';
+import 'TaskItem.dart';
+import '../screens/dashboard_model/DashboardData.dart';
 
 class TaskList extends StatelessWidget {
+  final List<Task> tasks;
+  final TaskService taskService = TaskService();
+
+  TaskList({required this.tasks});
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        TaskItem(taskName: 'Fajar Salat'),
-        TaskItem(taskName: 'Quran Tilawat'),
-        TaskItem(taskName: 'Meditation'),
-        TaskItem(taskName: 'Exercise'),
-      ],
-    );
-  }
-}
-
-class TaskItem extends StatelessWidget {
-  final String taskName;
-
-  TaskItem({required this.taskName});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        title: Text(taskName),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              icon: Icon(Icons.check, color: Colors.green),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.close, color: Colors.red),
-              onPressed: () {
-                _dialogBuilder(context);
-              },
-            ),
-            // IconButton(
-            //   icon: Icon(Icons.message, color: Colors.blue),
-            //   onPressed: () {},
-            // ),
-          ],
-        ),
-      ),
-    );
-  }
-  Future<void> _dialogBuilder(BuildContext context) {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Why Miss Your Task ?'),
-          content: TextFormField(
-            decoration: AppInputDecoration("Comments"),
-          ),
-          actions: <Widget>[
-            TextButton(
-              style: TextButton.styleFrom(
-                textStyle: Theme.of(context).textTheme.labelLarge,
-              ),
-              child: const Text('Disable'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                textStyle: Theme.of(context).textTheme.labelLarge,
-              ),
-              child: const Text('Save'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
+      children: tasks.map((task) {
+        // Convert Task to TaskModel
+        TaskModel taskModel = TaskModel(
+          taskId: task.id,
+          isDone: false,  // Assuming tasks are not done initially
         );
-      },
+        return TaskItem(task: taskModel, taskService: taskService);
+      }).toList(),
     );
   }
 }
