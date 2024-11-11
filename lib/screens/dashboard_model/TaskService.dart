@@ -2,9 +2,14 @@
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wake_up/screens/dashboard_model/task_model.dart';
 
-
+// getToken ফাংশন তৈরি করা
+Future<String?> getToken() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getString('token');
+}
 class TaskService {
   final String apiUrl = "https://yahiyaamin.xyz/api/task/store";
 
@@ -12,7 +17,10 @@ class TaskService {
     try {
       final response = await http.post(
         Uri.parse(apiUrl),
-        headers: {"Content-Type": "application/json"},
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer ${await getToken()}",
+        },
         body: jsonEncode(task.toJson()),
       );
 
