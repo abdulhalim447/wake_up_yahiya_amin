@@ -2,8 +2,10 @@ class TaskModel {
   final int taskId;
   bool isDone;
   String? comment;
+  String name;
+  String status;
 
-  TaskModel({required this.taskId, this.isDone = false, this.comment});
+  TaskModel({required this.taskId, this.isDone = false, this.comment, this.status = '',required this.name});
 
   // Method to convert Task object to JSON format
   Map<String, dynamic> toJson() {
@@ -11,6 +13,7 @@ class TaskModel {
       "task_id": taskId,
       "is_done": isDone,
       "comment": comment,
+      "name": comment,
     };
   }
 
@@ -20,6 +23,7 @@ class TaskModel {
       taskId: json['task_id'],
       isDone: json['is_done'] ?? false,
       comment: json['comment'],
+      name: json['name'],
     );
   }
 }

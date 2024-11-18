@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wake_up/auth/login.dart';
+import 'package:wake_up/screens/splash_screen.dart';
 
 
 void main() {
@@ -15,7 +15,7 @@ class TaskManagementApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Login(),
+      home: SplashScreen(),
     );
   }
 }

@@ -6,9 +6,9 @@
 
 
     <application
-        android:label="wake_up"
+        android:label="Wake Up"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@drawable/wake_up_logo">
         <activity
             android:name=".MainActivity"
             android:exported="true"

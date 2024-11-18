@@ -59,22 +59,6 @@ class _LoginState extends State<Login> {
     }
   }
 
-
-  @override
-  void initState() {
-    super.initState();
-    _checkLogin();
-  }
-
-  void _checkLogin() async {
-    if (await checkLoginState()) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => TaskManagementScreen()),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -21,11 +21,11 @@ class BottomNavBar extends StatelessWidget {
       ],
       currentIndex: 0,
       selectedItemColor: Colors.blue,
-      onTap: (index) {
+     /* onTap: (index) {
         if(index == 1){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => YoutubeVideoPlayer(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => YoutubeVideoPlayer(videoUrl: ,),));
         }
-      },
+      },*/
     );
   }
 }

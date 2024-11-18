@@ -17,7 +17,8 @@ class TaskList extends StatelessWidget {
         // Convert Task to TaskModel
         TaskModel taskModel = TaskModel(
           taskId: task.id,
-          isDone: false,  // Assuming tasks are not done initially
+          isDone: false,
+          name: task.name,  // Assuming tasks are not done initially
         );
         return TaskItem(task: taskModel, taskService: taskService);
       }).toList(),

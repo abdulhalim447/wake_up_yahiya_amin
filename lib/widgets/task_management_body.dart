@@ -19,7 +19,9 @@ class _TaskManagementBodyState extends State<TaskManagementBody> {
   @override
   void initState() {
     super.initState();
+
     loadData();
+
   }
 
   Future<void> loadData() async {

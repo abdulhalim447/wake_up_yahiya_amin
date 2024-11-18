@@ -20,7 +20,7 @@ class TaskManagementScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: TaskManagementBody(),
       ),
-      bottomNavigationBar: BottomNavBar(),
+
     );
   }
 }

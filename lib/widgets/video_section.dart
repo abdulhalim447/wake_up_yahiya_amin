@@ -1,11 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-import '../screens/youtube_player.dart';
-
-class VideoSection extends StatelessWidget {
+class VideoSection extends StatefulWidget {
   final String videoUrl;
 
-  VideoSection({required this.videoUrl});
+  const VideoSection({required this.videoUrl, Key? key}) : super(key: key);
+
+  @override
+  State<VideoSection> createState() => _VideoSectionState();
+}
+
+class _VideoSectionState extends State<VideoSection> {
+  late YoutubePlayerController _controller;
+  bool _isPlayerReady = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializePlayer(widget.videoUrl);
+  }
+
+  void _initializePlayer(String videoUrl) {
+    final videoId = YoutubePlayer.convertUrlToId(videoUrl);
+    if (videoId != null) {
+      _controller = YoutubePlayerController(
+        initialVideoId: videoId,
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          mute: false,
+          forceHD: true,
+        ),
+      )..addListener(_playerListener);
+    } else {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Invalid YouTube URL provided.")),
+        );
+      });
+    }
+  }
+
+  void _playerListener() {
+    if (_controller.value.isReady && !_isPlayerReady) {
+      setState(() {
+        _isPlayerReady = true;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +70,16 @@ class VideoSection extends StatelessWidget {
             color: Colors.grey[300],
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Center(
-            child: videoUrl.isNotEmpty
-                ? IconButton(
-              icon: Icon(Icons.play_circle_outline, size: 50, color: Colors.blue),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => YoutubeVideoPlayer(/*videoUrl: videoUrl*/),
-                  ),
-                );
-              },
-            )
-                : Text("No video available"),
+          child: widget.videoUrl.isNotEmpty
+              ? YoutubePlayer(
+            controller: _controller,
+            showVideoProgressIndicator: true,
+          )
+              : Center(
+            child: Text(
+              "No video available",
+              style: TextStyle(color: Colors.black45, fontSize: 16),
+            ),
           ),
         ),
       ],
