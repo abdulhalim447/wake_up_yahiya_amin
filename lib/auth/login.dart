@@ -90,7 +90,7 @@ class _LoginState extends State<Login> {
                   SizedBox(height: 20),
                   TextFormField(
                     controller: _mobileController,
-                    decoration: AppInputDecoration("Mobile"),
+                    decoration: AppInputDecoration("Enter Mobile Number"),
                   ),
                   SizedBox(height: 20),
                   Container(
@@ -139,5 +139,11 @@ class _LoginState extends State<Login> {
         ],
       ),
     );
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _mobileController.dispose();
+    super.dispose();
   }
 }

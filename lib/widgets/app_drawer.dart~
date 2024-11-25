@@ -4,7 +4,6 @@ import 'package:wake_up/screens/all_abouts/about_yahia_amin.dart';
 
 import '../screens/dashboard_model/DashboardData.dart';
 import '../utils/auth_utils.dart';
-import '../utils/utility.dart';
 
 class AppDrawer extends StatelessWidget {
   late DashboardData dashboardData;
@@ -38,7 +37,7 @@ class AppDrawer extends StatelessWidget {
           children: [
             /// Header of the Drawer
             Material(
-              color: colorDarkBlue,
+              color: Colors.blueAccent,
               child: InkWell(
 
                 child: Container(

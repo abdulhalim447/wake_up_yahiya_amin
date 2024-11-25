@@ -128,4 +128,10 @@ class _RegisterState extends State<Register> {
       ),
     );
   }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _mobileController.dispose();
+    super.dispose();
+  }
 }

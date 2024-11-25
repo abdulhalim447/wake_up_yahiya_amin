@@ -45,13 +45,12 @@ InputDecoration AppInputDecoration(label) {
       ),
       fillColor: Colors.white,
       filled: true,
-      hintText: label,
       contentPadding: EdgeInsets.fromLTRB(20, 10, 10, 20),
       enabledBorder: const OutlineInputBorder(
         borderSide: const BorderSide(color: Colors.white, width: 0.0),
       ),
       border: OutlineInputBorder(),
-      );
+      labelText: label);
 }
 
 ButtonStyle AppButtonStyle() {
